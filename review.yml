@@ -1,0 +1,305 @@
+aid: lj-hooker
+name: LJ Hooker
+review:
+  question: >-
+    Does LJ Hooker publish a public developer API surface, and what is its RESO
+    posture and access gate?
+  answer: false
+  date: '2026-07-26'
+  reviewer: API Evangelist
+  method: >-
+    Anonymous HTTP probing of ljhooker.com.au and sibling brand domains,
+    developer/docs/api subdomain resolution, well-known and spec-path probing,
+    static analysis of the property-search JavaScript bundle, live calls to the
+    discovered backend host, and a full-text search of the RESO certificates
+    directory.
+
+findings:
+  summary: |
+    LJ Hooker publishes no developer API surface of any kind. There is no
+    developer portal, no API documentation, no API reference, no API terms of
+    use, no SDKs, no Postman collection, no webhooks or events documentation,
+    and no partner or listing-data-feed programme on any LJ Hooker domain. The
+    developer., developers., api. and docs. subdomains of ljhooker.com.au do not
+    resolve in DNS. /developers, /api, /docs and /api-docs all 404. No
+    OpenAPI/Swagger document and no OData $metadata document is served anywhere.
+    /.well-known/openid-configuration returns 404, so no anonymous OpenID
+    Connect discovery is published.
+
+    The site itself is HubSpot-hosted (21262656.fs1.hubspotusercontent-na1.net,
+    /hs/scriptloader/21262656.js). Property search is a third-party product: the
+    search UI is loaded from https://assets.ljhooker.com/agentpoint-search-prod/
+    (Agentpoint, an Australian real-estate web vendor), and its JavaScript
+    bundle is an OpenAPI Generator JavaScript client (default headers
+    'User-Agent: OpenAPI-Generator/prod/Javascript') pointed at a single host,
+    https://api01.ljx.com.au — an AWS API Gateway behind CloudFront
+    (x-amz-apigw-id / x-amzn-errortype: ForbiddenException headers).
+
+    That backend is REAL and anonymously reachable, but it is NOT a published
+    developer API: no documentation, no terms permitting third-party use, no
+    key, and no published contract. An OpenAPI definition demonstrably exists
+    upstream (it generated the client), but it is not served. Because it is
+    undocumented and offered under no developer terms, it is deliberately NOT
+    listed in apis[] — recorded here as a finding only.
+
+  reso_posture_block:
+    reso_certified: false
+    reso_posture: >-
+      No RESO reference found — RESO is a North American (NAR-driven) regime with
+      no Australian footprint, and LJ Hooker does not appear in the RESO
+      certificates directory.
+    reso_web_api_certification: none
+    reso_data_dictionary_certification: none
+    reso_data_dictionary_version: null
+    reso_universal_property_identifier_upi: not referenced anywhere
+    odata_metadata_document: >-
+      None served. https://api01.ljx.com.au/$metadata returns HTTP 403
+      (API Gateway Forbidden — unrouted path), and
+      https://www.ljhooker.com.au/$metadata returns HTTP 404. The ljx backend is
+      plain JSON over REST, not OData.
+    directory_evidence: >-
+      Fetched https://www.reso.org/certificates/ (HTTP 200, 416,233 bytes) on
+      2026-07-26 and full-text searched it. Zero occurrences of "ljhooker",
+      "lj hooker", "hooker", "australia", "new zealand", "agentpoint" or "ljx",
+      against 825 occurrences of "mls" and 706 of "realtor" — confirming the
+      document does carry the certified-organization content and that LJ Hooker
+      is genuinely absent, not that the fetch failed.
+      https://www.reso.org/certification/ (HTTP 200) likewise contains no
+      Australian or LJ Hooker reference.
+    note: >-
+      This is the expected honest answer for a non-US brokerage. Australia's
+      machine-readable property rails are entirely different: the REA Group
+      (realestate.com.au) and Domain portal duopoly for listing distribution,
+      PEXA for electronic conveyancing settlement, state land registries, and
+      PropTrack (REA-owned) / CoreLogic for valuation. None of these are RESO.
+      LJ Hooker is a consumer of that stack, not a publisher of a standard.
+
+  access_gate_block:
+    access_gate: none-published
+    what_a_developer_must_sign_or_join: >-
+      Nothing is offered to sign or join. LJ Hooker publishes no developer
+      programme, no API licence, no IDX/VOW-equivalent data licence, no partner
+      application form, and no MLS/board/association membership path (Australia
+      has no MLS institution). There is no route by which an outside developer
+      can legitimately obtain access to LJ Hooker listing data as an API.
+      Listing distribution happens business-to-business into the portals
+      (realestate.com.au, Domain) and via the Agentpoint/LJX website platform —
+      neither of which is exposed to third parties by LJ Hooker.
+    self_serve_signup: false
+    application_or_approval_form: false
+    membership_required: false
+    licence_agreement_published: false
+    broker_or_agent_sponsorship_path: false
+    partner_programme: >-
+      A /partners page exists but is a consumer-facing list of commercial
+      service partners (finance, utilities, insurance), not a technology or data
+      partner programme.
+
+  open_data_block:
+    open_data: false
+    note: >-
+      LJ Hooker is a private brokerage and publishes no open dataset. Australia's
+      open-data counterweight sits with government (state land registries, some
+      of which are privatised, and data.gov.au), not with agencies. The
+      undocumented api01.ljx.com.au backend is anonymously callable but is not
+      open data — no licence, no terms, no publication.
+
+  auth_model_block:
+    scheme: none / anonymous
+    detail: >-
+      The generated JavaScript client initialises with an empty authentications
+      map (`authentications = {}`), meaning the website client presents no
+      credential. The generated ApiClient does carry unused 'X-API-Key',
+      'apiKey' and 'Authorization' plumbing typical of OpenAPI Generator
+      scaffolding, but none is populated for the website surface. Live anonymous
+      GETs to /website/search-v1/config and /website/offices-v1 returned HTTP
+      200 with real JSON, confirming no key is required. There is no OAuth2,
+      no OpenID Connect (/.well-known/openid-configuration is 404), and no
+      documented API key issuance process. Unrouted paths on the host return
+      HTTP 403 {"message":"Forbidden"} — the AWS API Gateway default, not an
+      auth challenge.
+
+  home_market_block:
+    home_market: Australia
+    also_operates: New Zealand
+    primary_domain: ljhooker.com.au
+    brand_domains:
+    - https://www.ljhooker.com.au/ (residential AU, HTTP 200)
+    - https://www.ljhcommercial.com.au/ (commercial AU, HTTP 200)
+    - https://www.ljhrural.com.au/ (rural AU, HTTP 200)
+    - https://www.ljhland.com.au/ (land and projects AU, HTTP 200)
+    - https://www.ljhooker.co.nz/ (New Zealand, HTTP 200)
+    - https://www.ljhooker.com/ (HTTP 200, redirects to www.ljhooker.com.au)
+    - https://careers.ljhookergroup.com.au/ (HTTP 200, redirects to /join-us)
+    value_chain_position: >-
+      Agency / brokerage and property management. Sits below the REA Group and
+      Domain portal duopoly for listing distribution, upstream of PEXA for
+      electronic conveyancing settlement and of state land registries, and is a
+      consumer of PropTrack (REA-owned) and CoreLogic valuation data rather than
+      a publisher of it. No PEXA, PropTrack or CoreLogic integration is
+      documented publicly on LJ Hooker properties.
+
+  webhooks_events_sdks_postman:
+    webhooks: >-
+      None. No webhook or event documentation exists anywhere on LJ Hooker
+      properties. Absence is the finding.
+    events_streaming: None documented.
+    sdks: >-
+      None published by LJ Hooker. The only client library located is the
+      vendor-built, minified Agentpoint bundle at
+      assets.ljhooker.com/agentpoint-search-prod/js/lj-hooker.js, which is not
+      offered as an SDK.
+    postman_collection: None published.
+    graphql: None found.
+    llms_txt: Not probed as published; no /llms.txt referenced.
+
+  undocumented_backend:
+    host: https://api01.ljx.com.au
+    infrastructure: AWS API Gateway behind Amazon CloudFront
+    operator: >-
+      Third-party website/search vendor (bundle namespace "agentpoint-search-prod";
+      the bundle also references https://agentpoint.website/ljh-lib-prod/).
+    contract_published: false
+    contract_exists_upstream: >-
+      Yes — the consuming client is OpenAPI-Generator output ("@version prod",
+      'User-Agent: OpenAPI-Generator/prod/Javascript'), so an OpenAPI document
+      exists internally. It is not served at /openapi.json, /swagger.json,
+      /swagger/v1/swagger.json, /v1/swagger.json, /api-docs, /swagger/index.html
+      or /swagger-ui/index.html (all HTTP 403 — unrouted).
+    endpoints_harvested_from_client_bundle:
+    - GET  /website/search-v1
+    - GET  /website/search-v1/config
+    - GET  /website/search-v1/links
+    - GET  /website/offices-v1
+    - GET  /website/team-v1
+    - GET  /website/lead/address-v1/{countryCode}
+    - GET  /website/lead/appraisal-v1/config
+    - GET  /website/lead/suburb-v1/{countryCode}
+    - GET  /website/listing/{listingId}/apply-link-v1
+    - GET  /website/listing/{listingId}/document-v1/{documentId}
+    - POST /website/lead/enquiry-v1
+    - POST /website/lead/appraisal-v1
+    - POST /website/agent/{staffId}/enquiry-v1
+    - POST /website/listing/{listingId}/enquiry-v1
+    live_verification:
+    - request: GET https://api01.ljx.com.au/website/search-v1/config?searchOrigin=residential-au&searchProfile=buy
+      status: 200
+      note: Returned real JSON search-facet configuration anonymously (property categories, bed/bath/parking/land-area/feature facets).
+    - request: GET https://api01.ljx.com.au/website/offices-v1?searchOrigin=residential-au
+      status: 200
+      note: Returned real JSON office directory anonymously (addresses, emails, coordinates, trading hours).
+    - request: GET https://api01.ljx.com.au/website/search-v1/config
+      status: 400
+      note: '"Query string parameter (searchOrigin) is missing" — routed, parameter-validated.'
+    - request: GET https://api01.ljx.com.au/openapi.json
+      status: 403
+      note: '{"message":"Forbidden"} — AWS API Gateway default for an unrouted path, not an auth challenge.'
+    listed_in_apis_yml: false
+    reason_not_listed: >-
+      Real and reachable, but undocumented and offered under no developer terms.
+      Recording it in apis[] would imply a published developer API where none
+      exists. Reachability is not a developer surface.
+
+probes:
+- url: https://www.ljhooker.com.au/
+  status: 200
+  note: Homepage. HubSpot-hosted.
+- url: https://ljhooker.com.au/
+  status: 200
+  note: Redirects to https://www.ljhooker.com.au/
+- url: https://developer.ljhooker.com.au/
+  status: 0
+  note: DNS does not resolve (curl error 6).
+- url: https://developers.ljhooker.com.au/
+  status: 0
+  note: DNS does not resolve (curl error 6).
+- url: https://api.ljhooker.com.au/
+  status: 0
+  note: DNS does not resolve (curl error 6).
+- url: https://docs.ljhooker.com.au/
+  status: 0
+  note: DNS does not resolve (curl error 6).
+- url: https://www.ljhooker.com.au/developers
+  status: 404
+- url: https://www.ljhooker.com.au/api
+  status: 404
+- url: https://www.ljhooker.com.au/docs
+  status: 404
+- url: https://www.ljhooker.com.au/api-docs
+  status: 404
+- url: https://www.ljhooker.com.au/openapi.json
+  status: 404
+- url: https://www.ljhooker.com.au/swagger.json
+  status: 404
+- url: https://www.ljhooker.com.au/$metadata
+  status: 404
+- url: https://www.ljhooker.com.au/.well-known/openid-configuration
+  status: 404
+- url: https://www.ljhooker.com.au/robots.txt
+  status: 200
+  note: HubSpot boilerplate only; no developer or API paths disallowed or revealed.
+- url: https://www.ljhooker.com.au/sitemap.xml
+  status: 200
+  note: 1,083,389 bytes. No /developers, /api, /docs, data-feed or integration URLs. The only "partner" URLs are consumer/marketing pages.
+- url: https://www.ljhooker.com.au/about-us
+  status: 200
+  note: Source of the network-scale figures cited in apis.yml.
+- url: https://www.ljhooker.com.au/legals/terms-of-use
+  status: 200
+  note: Site terms of use. No API terms.
+- url: https://www.ljhooker.com.au/legals/privacy-policy
+  status: 200
+  note: No API or developer-programme language.
+- url: https://www.ljhooker.com.au/blog/rss.xml
+  status: 200
+  content_type: text/xml
+- url: https://www.ljhooker.co.nz/developers
+  status: 404
+- url: https://www.ljhooker.co.nz/api
+  status: 404
+- url: https://property.ljhooker.com.au/
+  status: 404
+  note: Subdomain resolves and serves, but the root and all probed paths 404.
+- url: https://assets.ljhooker.com/agentpoint-search-prod/js/lj-hooker.js
+  status: 200
+  note: 843,078 bytes. OpenAPI-Generator JavaScript client; source of the endpoint inventory above.
+- url: https://api01.ljx.com.au/
+  status: 403
+  note: 'AWS API Gateway: x-amz-apigw-id, x-amzn-errortype ForbiddenException, via CloudFront.'
+- url: https://www.reso.org/certification/
+  status: 200
+- url: https://www.reso.org/certificates/
+  status: 200
+  note: Certified-organization directory. Searched; no LJ Hooker and no Australian entry.
+- url: https://www.ljhooker.com.au/hubfs/LJH%20Favicon%2096x96.png
+  status: 200
+  content_type: image/png
+  note: Real brand icon used as apis.yml image.
+
+sources:
+- url: https://www.ljhooker.com.au/about-us
+  type: About
+  note: 1928 Maroubra founding, 390 businesses, 4,000 people, AUD$20bn 2024 transactions, ~100,000 properties under management valued ~AUD$82bn, AU + NZ.
+- url: https://www.ljhooker.com.au/
+  type: Website
+  note: Brand-domain map, social links, HubSpot hosting, Agentpoint search assets.
+- url: https://assets.ljhooker.com/agentpoint-search-prod/js/lj-hooker.js
+  type: ClientBundle
+  note: Only evidence of a machine-readable contract; basePath https://api01.ljx.com.au, empty authentications map, 14 endpoints.
+- url: https://www.reso.org/certificates/
+  type: CertificationDirectory
+  note: Negative evidence for RESO certification.
+
+actions:
+  apisYmlCreated: true
+  apisListed: 0
+  openapiHarvested: false
+  specsCount: 0
+  openapiDirectoryOmitted: true
+  reason: >-
+    No OpenAPI, Swagger, AsyncAPI, Postman collection or OData $metadata
+    document is served by any LJ Hooker or vendor host. The endpoint inventory
+    above was faithfully harvested from the vendor's generated client bundle,
+    but authoring an OpenAPI document from observed behaviour would be
+    fabrication, so no spec was written. The openapi/ directory is therefore
+    omitted.
