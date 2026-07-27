@@ -1,0 +1,85 @@
+generated: '2026-07-26'
+method: probed
+source: live DNS/TLS/HTTP probes of every LJ Hooker brand host in apis.yml/review.yml plus the vendor-operated
+  backend host api01.ljx.com.au
+hosts:
+- host: www.ljhooker.com.au
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 14 19:24:58 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: www.ljhooker.co.nz
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 16 08:11:11 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: www.ljhcommercial.com.au
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 16 03:23:50 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: www.ljhrural.com.au
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 15 20:01:04 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: www.ljhland.com.au
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 16 15:46:35 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: assets.ljhooker.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov  4 23:59:59 2026 GMT
+  hsts: null
+- host: api01.ljx.com.au
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Jan 21 23:59:59 2027 GMT
+  hsts: null
+domains:
+- domain: ljhooker.com.au
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: ljhooker.co.nz
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false
+- domain: ljhcommercial.com.au
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: ljhrural.com.au
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false
+- domain: ljhland.com.au
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false
+- domain: ljhooker.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none
+- domain: ljx.com.au
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: none

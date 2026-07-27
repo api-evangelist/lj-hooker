@@ -275,6 +275,40 @@ probes:
   status: 200
   content_type: image/png
   note: Real brand icon used as apis.yml image.
+# Enrichment round 2026-07-26 — second-pass contract discovery and registry search.
+- url: https://api01.ljx.com.au/openapi.yaml
+  status: 403
+  note: Unrouted (AWS API Gateway default). Same for /v1/openapi.json, /swagger/v1/swagger.json, /docs, /redoc.
+- url: https://api01.ljx.com.au/website/openapi.json
+  status: 404
+  note: Routed prefix, no spec. The /website base path exists but serves no discovery document.
+- url: https://api01.ljx.com.au/graphql
+  status: 403
+  note: No GraphQL surface — unrouted path, not an auth challenge.
+- url: https://api01.ljx.com.au/.well-known/openid-configuration
+  status: 403
+  note: All seven probed /.well-known/ + /llms.txt paths return 403 on this host (gateway default).
+- url: https://www.ljhooker.com.au/llms.txt
+  status: 404
+  note: No llms.txt published. Also 404 on the .co.nz, commercial, rural and land brand hosts.
+- url: https://www.ljhooker.com.au/.well-known/security.txt
+  status: 404
+  note: No security.txt on any of the five brand hosts; 42 well-known probes total, zero hits.
+- url: https://status.ljhooker.com.au/
+  status: 0
+  note: DNS does not resolve — no status page.
+- url: https://www.ljhooker.com.au/contactus
+  status: 200
+  note: Consumer contact page. Not a developer support channel.
+- url: https://registry.npmjs.org/-/v1/search?text=ljhooker
+  status: 200
+  note: Zero results. No LJ Hooker package on npm; nothing on PyPI (ljhooker → 404).
+- url: https://api.github.com/users/ljhooker
+  status: 200
+  note: >-
+    A GitHub account named "ljhooker" exists but is an unrelated individual
+    (type User, name "Jonathan Hooker", company CDW). LJ Hooker publishes no
+    GitHub organization, so no GitHubOrganization pointer is wired.
 
 sources:
 - url: https://www.ljhooker.com.au/about-us

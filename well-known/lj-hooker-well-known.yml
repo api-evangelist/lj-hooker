@@ -1,0 +1,75 @@
+generated: '2026-07-26'
+method: probed
+source: live anonymous HTTP probes, 2026-07-26
+name: LJ Hooker well-known discovery surface
+result: none-published
+note: >-
+  No .well-known discovery document of any kind is published on any LJ Hooker
+  brand host. All five consumer brand hosts (residential AU, New Zealand,
+  commercial, rural, land) return HTTP 404 for every probed path, including
+  /llms.txt. The vendor-operated website backend api01.ljx.com.au is an AWS API
+  Gateway that returns HTTP 403 Forbidden for every unrouted path, which is the
+  gateway default rather than a discovery response or an auth challenge, so 403
+  there is equivalent to "not served" and not to "gated". Because zero documents
+  were found, this file is negative evidence only and deliberately carries NO
+  `type: WellKnown` pointer in apis.yml - there is no well-known catalog to point
+  at, and asserting one would be a false positive.
+documents: []
+hosts_probed:
+- www.ljhooker.com.au
+- www.ljhooker.co.nz
+- www.ljhcommercial.com.au
+- www.ljhrural.com.au
+- www.ljhland.com.au
+- api01.ljx.com.au
+paths_probed:
+- /.well-known/security.txt
+- /.well-known/openid-configuration
+- /.well-known/oauth-authorization-server
+- /.well-known/oauth-protected-resource
+- /.well-known/api-catalog
+- /.well-known/ai-plugin.json
+- /llms.txt
+probes:
+- {host: www.ljhooker.com.au, path: /.well-known/security.txt, status: 404, file: null}
+- {host: www.ljhooker.com.au, path: /.well-known/openid-configuration, status: 404, file: null}
+- {host: www.ljhooker.com.au, path: /.well-known/oauth-authorization-server, status: 404, file: null}
+- {host: www.ljhooker.com.au, path: /.well-known/oauth-protected-resource, status: 404, file: null}
+- {host: www.ljhooker.com.au, path: /.well-known/api-catalog, status: 404, file: null}
+- {host: www.ljhooker.com.au, path: /.well-known/ai-plugin.json, status: 404, file: null}
+- {host: www.ljhooker.com.au, path: /llms.txt, status: 404, file: null}
+- {host: www.ljhooker.co.nz, path: /.well-known/security.txt, status: 404, file: null}
+- {host: www.ljhooker.co.nz, path: /.well-known/openid-configuration, status: 404, file: null}
+- {host: www.ljhooker.co.nz, path: /.well-known/oauth-authorization-server, status: 404, file: null}
+- {host: www.ljhooker.co.nz, path: /.well-known/oauth-protected-resource, status: 404, file: null}
+- {host: www.ljhooker.co.nz, path: /.well-known/api-catalog, status: 404, file: null}
+- {host: www.ljhooker.co.nz, path: /.well-known/ai-plugin.json, status: 404, file: null}
+- {host: www.ljhooker.co.nz, path: /llms.txt, status: 404, file: null}
+- {host: www.ljhcommercial.com.au, path: /.well-known/security.txt, status: 404, file: null}
+- {host: www.ljhcommercial.com.au, path: /.well-known/openid-configuration, status: 404, file: null}
+- {host: www.ljhcommercial.com.au, path: /.well-known/oauth-authorization-server, status: 404, file: null}
+- {host: www.ljhcommercial.com.au, path: /.well-known/oauth-protected-resource, status: 404, file: null}
+- {host: www.ljhcommercial.com.au, path: /.well-known/api-catalog, status: 404, file: null}
+- {host: www.ljhcommercial.com.au, path: /.well-known/ai-plugin.json, status: 404, file: null}
+- {host: www.ljhcommercial.com.au, path: /llms.txt, status: 404, file: null}
+- {host: www.ljhrural.com.au, path: /.well-known/security.txt, status: 404, file: null}
+- {host: www.ljhrural.com.au, path: /.well-known/openid-configuration, status: 404, file: null}
+- {host: www.ljhrural.com.au, path: /.well-known/oauth-authorization-server, status: 404, file: null}
+- {host: www.ljhrural.com.au, path: /.well-known/oauth-protected-resource, status: 404, file: null}
+- {host: www.ljhrural.com.au, path: /.well-known/api-catalog, status: 404, file: null}
+- {host: www.ljhrural.com.au, path: /.well-known/ai-plugin.json, status: 404, file: null}
+- {host: www.ljhrural.com.au, path: /llms.txt, status: 404, file: null}
+- {host: www.ljhland.com.au, path: /.well-known/security.txt, status: 404, file: null}
+- {host: www.ljhland.com.au, path: /.well-known/openid-configuration, status: 404, file: null}
+- {host: www.ljhland.com.au, path: /.well-known/oauth-authorization-server, status: 404, file: null}
+- {host: www.ljhland.com.au, path: /.well-known/oauth-protected-resource, status: 404, file: null}
+- {host: www.ljhland.com.au, path: /.well-known/api-catalog, status: 404, file: null}
+- {host: www.ljhland.com.au, path: /.well-known/ai-plugin.json, status: 404, file: null}
+- {host: www.ljhland.com.au, path: /llms.txt, status: 404, file: null}
+- {host: api01.ljx.com.au, path: /.well-known/security.txt, status: 403, file: null}
+- {host: api01.ljx.com.au, path: /.well-known/openid-configuration, status: 403, file: null}
+- {host: api01.ljx.com.au, path: /.well-known/oauth-authorization-server, status: 403, file: null}
+- {host: api01.ljx.com.au, path: /.well-known/oauth-protected-resource, status: 403, file: null}
+- {host: api01.ljx.com.au, path: /.well-known/api-catalog, status: 403, file: null}
+- {host: api01.ljx.com.au, path: /.well-known/ai-plugin.json, status: 403, file: null}
+- {host: api01.ljx.com.au, path: /llms.txt, status: 403, file: null}

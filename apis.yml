@@ -41,10 +41,22 @@ modified: '2026-07-26'
 specificationVersion: '0.19'
 apis: []
 common:
+- type: DomainSecurity
+  url: security/lj-hooker-domain-security.yml
+- type: Conformance
+  url: conformance/lj-hooker-conformance.yml
+- type: LLMsTxt
+  url: llms/lj-hooker-llms.txt
 - type: Website
   url: https://www.ljhooker.com.au/
 - type: About
   url: https://www.ljhooker.com.au/about-us
+- type: Contact
+  url: https://www.ljhooker.com.au/contactus
+- type: Careers
+  url: https://careers.ljhookergroup.com.au/
+- type: Partners
+  url: https://www.ljhooker.com.au/partners
 - type: Blog
   url: https://www.ljhooker.com.au/blog
 - type: BlogRSS
