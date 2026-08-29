@@ -24,6 +24,17 @@ description: >-
   published. RESO — the Real Estate Standards Organization Web API and Data
   Dictionary — is a North American, NAR-driven regime with no Australian
   footprint, and LJ Hooker appears nowhere in the RESO certificates directory.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.ljhooker.com.au/hubfs/LJH%20Favicon%2096x96.png
 tags:
 - Real-Estate
