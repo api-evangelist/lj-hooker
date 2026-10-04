@@ -49,7 +49,7 @@ accessModel:
   method: derived
 image: https://www.ljhooker.com.au/hubfs/LJH%20Favicon%2096x96.png
 tags:
-- Real-Estate
+- Real Estate
 - Australia
 - New Zealand
 - Property Listings
@@ -70,6 +70,7 @@ tags_raw:
 - Commercial Real Estate
 - PropTech
 - Franchise
+- Real-Estate
 created: '2026-07-26'
 modified: '2026-07-26'
 specificationVersion: '0.23'
