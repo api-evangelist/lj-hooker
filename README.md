@@ -1,0 +1,137 @@
+# LJ Hooker (lj-hooker)
+
+<!-- API-EVANGELIST-PROVENANCE:BEGIN -->
+> ### About this repository
+>
+> **This is not our API.** This repository is an independent, third-party profile of a company's
+> **publicly available** API surface, maintained by [API Evangelist](https://apievangelist.com).
+> API Evangelist does not operate, host, resell, or support this company's APIs, and is not
+> affiliated with or endorsed by the company unless stated on the profile.
+>
+> **Where the information came from.** Everything here is assembled from material a member of the
+> public can reach with a browser and no credentials — the company's own website, developer portal
+> and documentation, the specifications it publishes for public use (OpenAPI, AsyncAPI, JSON Schema,
+> `apis.json`, `llms.txt` and similar), its public repositories, and its public status, pricing and
+> changelog pages. **Nothing here is obtained by breaching a system, defeating an access control, or
+> using credentials of any kind.**
+>
+> **The rating is an independent assessment.** The Kin Score and Agent Readiness rating are
+> independently calculated scores of a company's *public* API artifacts, produced by API Evangelist
+> against a published rubric. They are not certifications, endorsements, security assessments, or
+> audits, and they score published artifacts — not the quality, safety, or security of the software.
+>
+> **Corrections, re-scores, and removal are free.** No partnership, contract, or purchase is
+> required, and you do not need to justify the request.
+>
+> - **Something wrong?** Open an issue on this repository, or email
+>   [info@apievangelist.com](mailto:info@apievangelist.com).
+> - **Published something new?** Ask for a re-score and we will re-run the rating.
+> - **Want the listing taken down?** Say so and we will honor it. The profile is reduced to your
+>   company name, a factual description, and a link to your own site, and the company is recorded as
+>   **unrated** — never scored zero for having asked.
+>
+> **Response times.** Acknowledgement within **one business day**; removal or restriction within
+> **two business days**; corrections and re-scores within **five business days**.
+>
+> **Not from the company, and here with a question?** You are welcome here — we would rather be the
+> front line and point you the right way than have a good report go nowhere. What this repository
+> can answer is narrow, though, so it is worth knowing who you are actually looking for:
+>
+> - **A question about how the API works, an account, billing, or a bug in the service** — that is
+>   the company's own support, not us. We profile this API; we do not operate it and cannot see
+>   your account.
+> - **A bug in an open-source project we only catalog** — file it on that project's own repository.
+>   This has happened with a real and correct bug report that reached us instead of the people who
+>   could fix it, which helped nobody.
+> - **Anything about this listing itself** — the description, the tags, the rating, a missing or
+>   wrong artifact — is ours. Open an issue here.
+> - **Not sure, or something general about API Evangelist or APIs.io** — open an issue on the
+>   [APIs.io Inbox](https://github.com/api-search/inbox) and we will route it.
+>
+> **This repository contains no software, and we will never ask you to download anything.** There is
+> no build, release, installer, or binary here — only text and machine-readable API descriptions, so
+> there is nothing here that can be "corrupt" or need "repairing". Any issue, comment, or email
+> claiming otherwise and offering a download link is not from us and is hostile. Do not follow the
+> link; it is a lure. Report it to GitHub and, if you like, tell us at
+> [info@apievangelist.com](mailto:info@apievangelist.com) so we can take it down.
+>
+> **On a security or compliance team?** Email
+> [info@apievangelist.com](mailto:info@apievangelist.com) with *security* in the subject line and
+> you will get a person, not a form. We will tell you exactly which public URLs this profile was
+> built from so your team can see the same surface we did, and we will take the listing down on
+> request while you work through it.
+>
+> Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
+<!-- API-EVANGELIST-PROVENANCE:END -->
+
+LJ Hooker is one of the largest residential and commercial real estate brokerage and property management networks in Australia and New Zealand. Founded in Maroubra, Sydney in 1928, the franchise network reports 390 businesses and around 4,000 sales professionals, property managers and support staff, facilitated more than AUD$20 billion in property transactions during 2024, and manages roughly 100,000 properties valued at about AUD$82 billion on behalf of investors. It operates across residential sales and rentals (ljhooker.com.au), commercial (ljhcommercial.com.au), rural (ljhrural.com.au), land and projects (ljhland.com.au) and New Zealand (ljhooker.co.nz). LJ Hooker sits at the agency layer of the Australian property value chain — below the REA Group / Domain portal duopoly that distributes its listings, and upstream of PEXA electronic conveyancing and the PropTrack / CoreLogic valuation data concentration. Its API posture is honestly stated as none-published: there is no developer portal, no published API documentation, no API terms of use and no partner or data-feed programme on any LJ Hooker domain. The only programmatic surface located is an undocumented, vendor-operated website backend at api01.ljx.com.au, generated by OpenAPI Generator and consumed by the Agentpoint-built property search front end; that OpenAPI definition is not published. RESO — the Real Estate Standards Organization Web API and Data Dictionary — is a North American, NAR-driven regime with no Australian footprint, and LJ Hooker appears nowhere in the RESO certificates directory.
+
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/lj-hooker/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/lj-hooker/refs/heads/main/apis.yml)
+
+## Tags
+
+- Real Estate
+- Australia
+- New Zealand
+- Property Listings
+- Brokerage
+- Property Management
+- Rentals
+- Commercial Real Estate
+- PropTech
+- Franchise
+
+## Timestamps
+
+- **Created:** 2026-07-26
+- **Modified:** 2026-07-26
+
+## APIs
+
+No public, documented APIs are published by LJ Hooker. See `review.yml` for the full probe record.
+
+## RESO Posture
+
+- **RESO certified:** No
+- **Posture:** No RESO reference found — RESO is a North American (NAR-driven) regime with no Australian footprint, and LJ Hooker appears nowhere in the RESO certificates directory.
+- **Web API certification:** none
+- **Data Dictionary certification:** none
+- **Universal Property Identifier (UPI):** not referenced anywhere
+- **OData `$metadata`:** none served — `https://api01.ljx.com.au/$metadata` returns HTTP 403 and `https://www.ljhooker.com.au/$metadata` returns HTTP 404
+
+Directory evidence: `https://www.reso.org/certificates/` was fetched (HTTP 200, 416,233 bytes) on 2026-07-26 and full-text searched. Zero occurrences of "lj hooker", "hooker", "australia" or "new zealand", against 825 occurrences of "mls" and 706 of "realtor" — confirming the document carries the certified-organization content and that LJ Hooker is genuinely absent.
+
+## Access Gate
+
+- **Gate:** `none-published`
+- **What a developer must sign or join:** nothing is offered. There is no developer programme, no API licence, no IDX/VOW-equivalent data licence, no application form, no partner tier, and no MLS/board/association membership path (Australia has no MLS institution).
+- **Open data:** No.
+- **Auth model:** none / anonymous. The generated client initialises with an empty authentications map; live anonymous GETs to the backend returned HTTP 200. No OAuth2, no OpenID Connect (`/.well-known/openid-configuration` returns 404), no documented key issuance.
+
+## Undocumented Backend (recorded, not listed)
+
+Property search on ljhooker.com.au is a third-party product: the UI loads from `https://assets.ljhooker.com/agentpoint-search-prod/`, and its JavaScript bundle is OpenAPI Generator output pointed at a single host, `https://api01.ljx.com.au` — an AWS API Gateway behind CloudFront. Fourteen endpoints were harvested from that bundle and two were confirmed live and anonymously callable.
+
+This surface is real but is **not** a developer API: no documentation, no terms permitting third-party use, no published contract. It is recorded in `review.yml` as a finding and deliberately excluded from `apis[]` — reachability is not a developer surface.
+
+## Home Market
+
+Australia (also operates in New Zealand). Primary domain `ljhooker.com.au`.
+
+## Common Properties
+
+- [Website](https://www.ljhooker.com.au/)
+- [About](https://www.ljhooker.com.au/about-us)
+- [Blog](https://www.ljhooker.com.au/blog)
+- [Blog RSS](https://www.ljhooker.com.au/blog/rss.xml)
+- [Newsroom](https://www.ljhooker.com.au/newsroom)
+- [Terms of Use](https://www.ljhooker.com.au/legals/terms-of-use)
+- [Privacy Policy](https://www.ljhooker.com.au/legals/privacy-policy)
+- [LinkedIn](https://www.linkedin.com/company/lj-hooker)
+- [Facebook](https://www.facebook.com/ljhooker)
+- [Instagram](https://www.instagram.com/ljhooker/)
+- [YouTube](https://www.youtube.com/user/ljhooker)
+
+## Maintainers
+
+- Kin Lane — kin@apievangelist.com
